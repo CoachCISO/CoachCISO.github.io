@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: master
 title: "Why Inspection Failed"
 date: 2026-05-22
 ---
