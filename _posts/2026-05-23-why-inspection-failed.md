@@ -5,6 +5,9 @@ date: 2026-05-22
 categories: [software, cybersecurity]
 tags: [appsec, vulnerabilities]
 ---
+**Topics:** {{ page.categories | join: ", " }}
+**Tags:** {{ page.tags | join: ", " }}
+
 # Why inspection failed — and what AppSec should do next
 A plan for software security in the age of AI-generated code
 
