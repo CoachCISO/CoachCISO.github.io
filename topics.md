@@ -3,7 +3,7 @@ layout: master
 title: All Topics
 ---
 
-Here is everything I've written about, organized by category:
+Here is everything I've written about, organised by category:
 
 {% for category in site.categories %}
   ### {{ category[0] | capitalize }}
