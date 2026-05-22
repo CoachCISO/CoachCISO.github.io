@@ -2,6 +2,8 @@
 layout: master
 title: "Why Inspection Failed"
 date: 2026-05-22
+categories: [software, cybersecurity]
+tags: [appsec, vulnerabilities]
 ---
 # Why inspection failed — and what AppSec should do next
 A plan for software security in the age of AI-generated code
