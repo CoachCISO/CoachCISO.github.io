@@ -5,8 +5,8 @@ theme: jekyll-theme-chirpy
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
-#baseurl: '/heidloffblog'
-baseurl: ''
+#baseurl: '/CoachCISO'
+baseurl: '/PROJECT_NAME'
 
 #url: 'https://coachciso.github.io/'
 url: 'https://coachciso.com'
@@ -24,7 +24,7 @@ timezone: Europe/Berlin
 # ↓ --------------------------
 title: Coach CISO
 
-tagline: "<div>Welcome to my blog!</div><div style='padding-bottom: 10px;'></div><div>I'm an IT professional focussing on artificial intelligence, development and advocacy.</div><div style='padding-bottom: 10px;'></div><div>Recently I've worked on Generative AI, Kubernetes, Open Source, Java and DevOps at IBM.</div><div style='padding-bottom: 10px;'></div><div>I'm a proud father of five and love building things - software as well as outdoor areas.</div>"
+tagline: "<div>Welcome to my blog!</div><div style='padding-bottom: 10px;'></div><div>I'm a Chief Information Security Officer and Chartered Mechanical Engineer with a Master's degree in Mechanical Engineering and Manufacturing Systems.</div><div style='padding-bottom: 10px;'></div><div>Recently I've worked on Generative AI, Kubernetes, DevOps and Cloud-native engineering and governance at OVO.</div><div style='padding-bottom: 10px;'></div><div>I'm a former semi-professional rugby player and love building software as well as high performing teams.</div>"
 
 description: >-   
   Blog from Simon Goldsmith, a Chief Information Security Officer Simon Goldsmith is a Chief Information Security Officer and a lifelong student of leadership and building high performing teams. Simon believes in security as both a profession and craft - one that requires relentless curiosity, the humility to listen to those in the code, and the agility to adapt to the unique complexity of the organisations and people we serve.
