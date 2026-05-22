@@ -24,7 +24,7 @@ timezone: Europe/Berlin
 # ↓ --------------------------
 title: Coach CISO
 
-tagline: "<div>Welcome to Coach CISO</div><div style='padding-bottom: 10px;'></div><div>I'm a Chief Information Security Officer and Chartered Mechanical Engineer with a Master's degree in Mechanical Engineering and Manufacturing Systems.</div><div style='padding-bottom: 10px;'></div><div>Recently I've worked on Generative AI, Kubernetes, DevOps and Cloud-native engineering and governance at OVO.</div><div style='padding-bottom: 10px;'></div><div>I'm a former semi-professional rugby player and love building software as well as high performing teams.</div>"
+tagline: "<div>Welcome to Coach CISO</div><div style='padding-bottom: 10px;'></div><div>I'm a Chief Information Security Officer, Chartered Security Professional and Chartered Mechanical Engineer.</div><div style='padding-bottom: 10px;'></div><div>Recently I've led the team securing Generative AI, Kubernetes, DevOps and Cloud-native engineering and governance at OVO.</div><div style='padding-bottom: 10px;'></div><div>I'm a former semi-professional rugby player and love building great technology experiences as well as high performing teams.</div>"
 
 description: >-   
   Blog from Simon Goldsmith, a Chief Information Security Officer and a lifelong student of leadership and building high performing teams. Simon believes in security as both a profession and craft - one that requires relentless curiosity, the humility to listen to those in the code, and the agility to adapt to the unique complexity of the organisations and people we serve.
@@ -70,7 +70,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/assets/img/4Y7B9422-4.jpeg'
+avatar:
 
 # boolean type, the global switch for ToC in posts.
 toc: true

@@ -1,7 +1,7 @@
 ---
 id: 01
 title: 'Welcome to my new blog !'
-date: '2026-05-22T00:00:00+00:00'
+date: '2026-04-01T00:00:00+00:00'
 author: 'Simon Goldsmith'
 layout: post
 categories:
