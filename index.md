@@ -1,3 +1,7 @@
+## About
+
+[Click here to read about me](about.md)
+
 ## Recent Posts
 
 <ul>
