@@ -1,3 +1,14 @@
+---
+id: 02
+title: 'Why inspection failed'
+date: '2026-05-22T00:00:00+00:00'
+author: 'Simon Goldsmith'
+layout: post
+dsq_thread_id:
+    - '4317545101'
+categories:
+    - Articles, Cybersecurity, Software
+---
 # Why inspection failed — and what AppSec should do next
 A plan for software security in the age of AI-generated code
 
