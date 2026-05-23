@@ -4,6 +4,7 @@ title: 'Control Theory for Software Security'
 date: '2026-05-23T00:00:00+00:00'
 author: 'Simon Goldsmith'
 layout: post
+excalidraw: true
 categories:
     - Articles, Cybersecurity, Software
 ---
@@ -20,7 +21,7 @@ I've been thinking about the application of control theory to software security,
 Proposal: a hierarchical control structure
 Higher levels set constraints on the levels below; lower levels feed information back up.
 
-![[assets/img/2026-05-23/fig1-control-structure.excalidraw]]
+![The control structure: developer and AI harness feeding the IDE, then the CI/CD gate, then the controlled system](/assets/img/2026-05-23/fig1-control-structure.excalidraw)
 *Figure 1 — The control structure. Each controller constrains the one below and feeds observations back up. The AI harness generates code but can't be trusted to enforce, so the deterministic CI/CD gate is the backstop before the controlled system.*
 
 1. The controllers
@@ -45,7 +46,7 @@ Start with the loss, not the control. The loss is a user reading or changing ano
 
 You can't prove that with a scanner — whether each handler got it right is a question of meaning, not syntax. So don't try to catch the missing check; design it so the check can't be skipped. Route all data access through one gate that won't run a query unless you tell it who's asking and what they're touching. An unscoped query no longer compiles, and 'forgot to authorise' stops being a state you can reach. It's the same trick as constraint 1 — where parameterisation makes injection impossible to express — lifted to a harder problem. Each layer then enforces the part it can check, and CI/CD proves deterministically that no code reaches data outside the gate.
 
-![[assets/img/2026-05-23/fig2-authorisation-gate.excalidraw]]
+![Every data path routed through a single authorisation gate requiring principal, record and action; unscoped queries have no path to the database](/assets/img/2026-05-23/fig2-authorisation-gate.excalidraw)
 *Figure 2 — Designing the hazardous state out. Every data path runs through one authorisation gate that needs the principal, the record and the action; an unscoped query has no path to the database — it doesn't compile.*
 
 What no gate can prove is whether the rules themselves are right — 'an order is readable by its owner and by same-region support staff'. That's a human judgement. But the payoff is that the judgement now lives in one small, reviewable place instead of being scattered across every handler. The structure doesn't remove trust in the AI; it shrinks the surface that trust has to cover. Two things keep the gate honest: it must fail closed, so an unrecognised data-access path breaks the build, and it must reject 'system' callers that quietly switch authorisation off.
