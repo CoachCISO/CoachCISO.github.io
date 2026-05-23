@@ -35,6 +35,18 @@ search:
 mermaid:
   js: https://cdn.jsdelivr.net/npm/mermaid@9.2.2/dist/mermaid.min.js
 
+# Excalidraw client-side renderer.
+# Loaded via esm.sh because @excalidraw/excalidraw ships ESM-only since 0.18
+# and needs React 19 as a peer. Asset_path is the base URL the package fetches
+# its own runtime assets (fonts, language packs) from at render time.
+excalidraw:
+  css: https://esm.sh/@excalidraw/excalidraw@0.18.1/dist/dev/index.css
+  asset_path: https://esm.sh/@excalidraw/excalidraw@0.18.1/dist/prod/
+  js: https://esm.sh/@excalidraw/excalidraw@0.18.1
+  react: https://esm.sh/react@19.0.0
+  react_jsx_runtime: https://esm.sh/react@19.0.0/jsx-runtime
+  react_dom: https://esm.sh/react-dom@19.0.0
+
 dayjs:
   js:
     common: https://cdn.jsdelivr.net/npm/dayjs@1.11.6/dayjs.min.js

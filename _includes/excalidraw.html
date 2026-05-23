@@ -1,0 +1,129 @@
+<!--
+  Excalidraw viewer.
+
+  Renders `.excalidraw` JSON source files referenced via standard markdown
+  image syntax — e.g.  ![alt](/assets/diagrams/foo.excalidraw)  — into inline
+  SVG, client-side. Enable per post by adding `excalidraw: true` to the
+  front matter (mirrors the `mermaid: true` convention).
+
+  Cost: pulls ~1 MB of JS (React 19 + Excalidraw) from esm.sh on pages that
+  opt in. Pages without the flag pay nothing. URLs are pinned in
+  _data/assets/cross_origin.yml.
+
+  Dark mode: follows the site theme toggle via Chirpy's ModeToggle messages,
+  using the same re-render trick as _includes/mermaid.html.
+-->
+
+{% assign ex = site.data.assets[origin].excalidraw %}
+
+<link rel="stylesheet" href="{{ ex.css }}">
+
+<style>
+  /* Hide raw <img> references to .excalidraw files until JS swaps them out,
+     so readers don't see a broken-image flash. */
+  img[src$=".excalidraw"] { display: none; }
+  .excalidraw-rendered { max-width: 100%; height: auto; display: block; margin: 1em auto; }
+  .excalidraw-error {
+    padding: 1em;
+    border: 1px dashed #c00;
+    color: #c00;
+    font-family: monospace;
+    font-size: 0.85em;
+    white-space: pre-wrap;
+  }
+</style>
+
+<script>
+  window.EXCALIDRAW_ASSET_PATH = {{ ex.asset_path | jsonify }};
+</script>
+
+<script type="importmap">
+  {
+    "imports": {
+      "react": "{{ ex.react }}",
+      "react/jsx-runtime": "{{ ex.react_jsx_runtime }}",
+      "react-dom": "{{ ex.react_dom }}",
+      "@excalidraw/excalidraw": "{{ ex.js }}"
+    }
+  }
+</script>
+
+<script type="module">
+  import { exportToSvg } from "@excalidraw/excalidraw";
+
+  /* One entry per <img src="*.excalidraw"> found on the page. `current` is
+     whatever node currently stands in for the image — initially the <img>
+     itself, then the rendered <svg>, or an error <div>. We re-render in
+     place on theme change rather than fetching again. */
+  const diagrams = [];
+  const sceneCache = new Map();
+
+  function isDarkMode() {
+    const mode = document.documentElement.dataset.mode;
+    if (mode === "dark") return true;
+    if (mode) return false; /* explicit light */
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  async function getScene(src) {
+    if (sceneCache.has(src)) return sceneCache.get(src);
+    const res = await fetch(src);
+    if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${src}`);
+    const scene = await res.json();
+    if (!Array.isArray(scene.elements)) {
+      throw new Error("file is not a valid .excalidraw scene (missing elements[])");
+    }
+    sceneCache.set(src, scene);
+    return scene;
+  }
+
+  async function render(entry, dark) {
+    try {
+      const scene = await getScene(entry.src);
+      const svg = await exportToSvg({
+        elements: scene.elements,
+        appState: Object.assign({}, scene.appState, {
+          exportWithDarkMode: dark,
+          exportBackground: false,
+        }),
+        files: scene.files || {},
+      });
+      svg.classList.add("excalidraw-rendered");
+      if (entry.alt) svg.setAttribute("aria-label", entry.alt);
+      entry.current.replaceWith(svg);
+      entry.current = svg;
+    } catch (err) {
+      /* Rule 12: fail loud. Don't leave a silently-broken page. */
+      console.error("[excalidraw] render failed for", entry.src, err);
+      const box = document.createElement("div");
+      box.className = "excalidraw-error";
+      box.textContent = `Excalidraw render failed: ${entry.src}\n${err.message}`;
+      entry.current.replaceWith(box);
+      entry.current = box;
+    }
+  }
+
+  function renderAll(dark) {
+    diagrams.forEach((entry) => render(entry, dark));
+  }
+
+  document.querySelectorAll('img[src$=".excalidraw"]').forEach((img) => {
+    diagrams.push({
+      current: img,
+      src: img.getAttribute("src"),
+      alt: img.alt || "",
+    });
+  });
+
+  renderAll(isDarkMode());
+
+  /* Chirpy broadcasts theme changes via window.postMessage with
+     direction === ModeToggle.ID; message is "dark" or "light". Mirror the
+     mermaid include's listener so diagrams flip with the toggle. */
+  window.addEventListener("message", (event) => {
+    if (event.source !== window || !event.data) return;
+    if (typeof ModeToggle === "undefined") return;
+    if (event.data.direction !== ModeToggle.ID) return;
+    renderAll(event.data.message === "dark");
+  });
+</script>
