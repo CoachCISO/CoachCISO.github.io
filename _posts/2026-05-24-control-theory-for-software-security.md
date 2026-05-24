@@ -27,19 +27,20 @@ Higher levels set constraints on the levels below; lower levels feed information
 1. **The controllers**
 Every controller, human or machine, works from a process model — its picture of the system's current state — and incidents happen when that picture drifts from reality.
 
--- **The developer** holds the intent, but their picture can be wrong (e.g. misreading how input is sanitised).
--- **The AI harness** writes and reviews code from its training and prompt context, so a wrong picture means unsafe suggestions. Guardrails and prompt constraints are its first control loop — but it's a black box: its reasoning is opaque and probabilistic, so we can't rely on it to enforce anything. That's exactly why it needs a deterministic supervisor downstream.
--- **The IDE** is the fast feedback loop and the boundary between the developer/AI and the code. As code is written it checks constraints locally, and when something unsafe appears (say, a vulnerable SQL query) it pushes back immediately - correcting the developer's and the AI's picture before anything is committed.
--- **The CI/CD pipeline** is the deterministic gate. It doesn't matter whether the developer misunderstood something or the AI imagined it was safe: the checks run, and a violated constraint fails the build. This isn't a physical, unbreakable barrier — it's software the organisation owns — so the point isn't that it can't be bypassed, but that bypassing it is a deliberate, logged, expiring exception rather than an invisible one.
+    - **The developer** holds the intent, but their picture can be wrong (e.g. misreading how input is sanitised).
+    - **The AI harness** writes and reviews code from its training and prompt context, so a wrong picture means unsafe suggestions. Guardrails and prompt constraints are its first control loop — but it's a black box: its reasoning is opaque and probabilistic, so we can't rely on it to enforce anything. That's exactly why it needs a deterministic supervisor downstream.
+    - **The IDE** is the fast feedback loop and the boundary between the developer/AI and the code. As code is written it checks constraints locally, and when something unsafe appears (say, a vulnerable SQL query) it pushes back immediately - correcting the developer's and the AI's picture before anything is committed.
+    - **The CI/CD pipeline** is the deterministic gate. It doesn't matter whether the developer misunderstood something or the AI imagined it was safe: the checks run, and a violated constraint fails the build. This isn't a physical, unbreakable barrier — it's software the organisation owns — so the point isn't that it can't be bypassed, but that bypassing it is a deliberate, logged, expiring exception rather than an invisible one.
 
 2. **The constraints they enforce**
 Instead of 'we'll scan for vulnerabilities', we state explicit constraints, and the controllers exist only to enforce them.
 
--- **constraint 1:** untrusted data must never reach a database without parameterisation.
--- **constraint 2:** no hardcoded secrets in the source repository.
--- **constraint 3:** the AI must not commit changes to authentication logic without a second, human sign-off.
+    - **constraint 1:** untrusted data must never reach a database without parameterisation.
+    - **constraint 2:** no hardcoded secrets in the source repository.
+    - **constraint 3:** the AI must not commit changes to authentication logic without a second, human sign-off.
 
 3. **A constraint you can't scan for**
+
 The three constraints above are the easy kind — a tool can already check each one. The real test is a constraint no scanner reliably catches. Take broken object-level authorisation (IDOR / BOLA), the most exploited class of web and API bug: one user reading or changing another user's records. No scanner finds it reliably, because the missing authorisation check is the bug, and whether a check is even needed depends on what the data means.
 
 Start with the loss, not the control. The loss is a user reading or changing another user's data; the hazard is any request handler that returns or changes a record without checking that this user is allowed this record; so the constraint is that every access to a user-owned resource must carry an authorisation decision tied to the user, the record and the action.
