@@ -42,11 +42,15 @@ categories:
 
    For each, take the **basename** of the target. Skip remote URLs (`http://`, `https://`) — leave those untouched. Locate the source file by basename: look in `raw-posts/` first (`Glob raw-posts/**/<basename>`), then relative to the draft.
 
-3. **Relocate the images.** Create `assets/img/<date>/` (`mkdir -p`). `mv` each found source file into it. Rewrite every local reference — whatever its original form — to standard markdown:
+3. **Relocate the images.** Create `assets/img/<date>/` (`mkdir -p`). `mv` each found source file into it. Determine the alt text for each reference: preserve any alt from a `![[...|alt]]` embed or `![alt](...)`; if there's none, derive it from the figure caption on the next non-empty line (an italic `*Figure N — ...*`, with the `Figure N — ` prefix stripped); otherwise fall back to the basename without extension. Then rewrite each local reference by type:
 
-   `![<alt>](/assets/img/<date>/<basename>)`
+   - **Excalidraw** (`.excalidraw`) → a placeholder div, on its own line with a blank line after it:
 
-   - Preserve any alt text from a `![[...|alt]]` embed or `![alt](...)`. If there's none, derive alt from the figure caption on the next non-empty line (an italic `*Figure N — ...*`, with the `Figure N — ` prefix stripped); otherwise fall back to the basename without extension. Excalidraw diagrams **must** become standard `![](...)` `<img>` tags — the renderer only swaps `img[src$=".excalidraw"]`, so a raw `![[...]]` embed would never render.
+     `<div data-excalidraw="/assets/img/<date>/<basename>" data-alt="<alt>"></div>`
+
+     Do **not** use markdown image syntax for excalidraw. Chirpy's `refactor-content.html` rewrites every `<img>` (src→data-src for lazysizes, plus a lightbox wrapper), which makes the client-side renderer race the lazy-loader and render unpredictably. A `<div data-excalidraw>` is invisible to that pipeline; `_includes/excalidraw.html` selects on `[data-excalidraw]`.
+
+   - **All other images** (png/jpg/svg/gif…) → standard markdown: `![<alt>](/assets/img/<date>/<basename>)`. These are meant to go through Chirpy's normal image handling.
 
 4. **Excalidraw / dark mode.** If any referenced image ends in `.excalidraw`, add `excalidraw: true` to the front-matter. That is the entire dark-mode requirement: `_includes/excalidraw.html` renders the diagram client-side and re-renders it with `exportWithDarkMode` whenever the theme toggles, so no per-file colour edits are needed. Without the flag the diagram silently won't render.
 
