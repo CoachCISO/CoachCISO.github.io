@@ -48,3 +48,19 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
     border-bottom-color: var(--link-color);
   }
 }
+
+/* Excalidraw captions: the script replaces the placeholder div with an
+   <svg class="excalidraw-rendered">, so the caption is the paragraph after it.
+   Match Chirpy's PNG figure caption (%img-caption): small, centred, upright,
+   grey, pulled tight to the diagram. */
+.excalidraw-rendered + p,
+[data-excalidraw] + p {
+  margin-top: -0.5rem;
+  text-align: center;
+  font-size: 80%;
+  color: #6d6c6c;
+
+  em {
+    font-style: normal;
+  }
+}
