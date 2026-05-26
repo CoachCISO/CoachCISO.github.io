@@ -52,9 +52,15 @@ categories:
 
    - **All other images** (png/jpg/svg/gif…) → standard markdown: `![<alt>](/assets/img/<date>/<basename>)`. These are meant to go through Chirpy's normal image handling.
 
-4. **Excalidraw / dark mode.** If any referenced image ends in `.excalidraw`, add `excalidraw: true` to the front-matter. That is the entire dark-mode requirement: `_includes/excalidraw.html` renders the diagram client-side and re-renders it with `exportWithDarkMode` whenever the theme toggles, so no per-file colour edits are needed. Without the flag the diagram silently won't render.
+4. **LinkedIn article link.** If the draft body links to a LinkedIn article (typically a closing line like `This article was published on [LinkedIn](https://www.linkedin.com/...)`), prepend a Font Awesome LinkedIn icon — linked to that same article — so the line reads as a LinkedIn-badged callout. Use raw HTML so it opens in a new tab:
 
-5. **Write & clean up.** Write the transformed post to `_posts/<date>-<slug>.md`, then `rm` the original draft from `raw-posts/`. (Move, not copy.)
+   `<a href="<linkedin-url>" target="_blank" rel="noopener" aria-label="Read this article on LinkedIn"><i class="fab fa-linkedin"></i></a> <original line text>`
+
+   The site does **not** render Chirpy's generic "share on LinkedIn" button — it was removed from `_data/share.yml` in favour of this direct article link (the copy-link icon stays). Skip this step if the draft has no LinkedIn article link.
+
+5. **Excalidraw / dark mode.** If any referenced image ends in `.excalidraw`, add `excalidraw: true` to the front-matter. That is the entire dark-mode requirement: `_includes/excalidraw.html` renders the diagram client-side and re-renders it with `exportWithDarkMode` whenever the theme toggles, so no per-file colour edits are needed. Without the flag the diagram silently won't render.
+
+6. **Write & clean up.** Write the transformed post to `_posts/<date>-<slug>.md`, then `rm` the original draft from `raw-posts/`. (Move, not copy.)
 
 ## Fail loud (per CLAUDE.md Rule 12)
 

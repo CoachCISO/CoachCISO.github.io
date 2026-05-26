@@ -2,12 +2,14 @@
 #  Icons from <https://fontawesome.com/>
 
 platforms:
-  -
-    type: Linkedin
-    icon: "fab fa-linkedin"
-    link: "https://www.linkedin.com/sharing/share-offsite/?url=URL"
-
-  # Uncomment below if you need to.
+  # Generic share buttons are disabled — posts link directly to their canonical
+  # LinkedIn article instead (see the /publish-draft command). The copy-link
+  # icon in _includes/post-sharing.html remains. Uncomment an entry to re-enable.
+  #
+  # -
+  #   type: Linkedin
+  #   icon: "fab fa-linkedin"
+  #   link: "https://www.linkedin.com/sharing/share-offsite/?url=URL"
   #
   # -
   #   type: Weibo
