@@ -23,6 +23,7 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 
 #sidebar #avatar img {
   object-fit: cover;
+  object-position: top;
 }
 
 /* Scale the sidebar tagline with the browser-window height so the profile
