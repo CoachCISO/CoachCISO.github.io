@@ -29,8 +29,14 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 /* Scale the sidebar tagline with the browser-window height so the profile
    block grows/shrinks to fit the viewport instead of overflowing. */
 #sidebar .site-subtitle {
-  font-size: clamp(0.58rem, 1.3vh, 0.8rem);
-  line-height: 1.3;
+  font-size: clamp(0.82rem, 1.6vh, 0.92rem);
+  line-height: 1.32;
+}
+
+/* The tagline's inter-paragraph spacer divs (inline padding-bottom: 10px) eat
+   vertical space; compress them so a readable font still fits without scroll. */
+#sidebar .site-subtitle div[style*="padding-bottom"] {
+  padding-bottom: 3px !important;
 }
 
 /* Home-page post titles are headings, not links: ink black (heading colour)
