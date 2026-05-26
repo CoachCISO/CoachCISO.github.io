@@ -56,9 +56,26 @@ layout: page
     <div class="post-content">
       <p>
         {% include no-linenos.html content=post.content %}
-        {% comment %} Drop the leading <h1> so the summary doesn't repeat the post title {% endcomment %}
-        {% assign post_summary = content | markdownify | split: '</h1>' | last %}
-        {{ post_summary | strip_html | truncate: 200 | escape }}
+        {%- comment -%}
+          Summary = first real prose paragraph. Drop the leading <h1>, then skip
+          image/diagram-only paragraphs and figure captions (captions are
+          <em>-wrapped or begin with "Figure"). Falls back to the whole body.
+        {%- endcomment -%}
+        {%- assign _body = content | markdownify | split: '</h1>' | last -%}
+        {%- assign _chunks = _body | split: '<p>' -%}
+        {%- assign post_summary = '' -%}
+        {%- for _chunk in _chunks -%}
+          {%- if post_summary != '' -%}{%- break -%}{%- endif -%}
+          {%- assign _ptext = _chunk | split: '</p>' | first | strip_html | strip -%}
+          {%- if _ptext == '' -%}{%- continue -%}{%- endif -%}
+          {%- assign _lead = _chunk | strip | slice: 0, 4 -%}
+          {%- if _lead == '<em>' -%}{%- continue -%}{%- endif -%}
+          {%- assign _fig = _ptext | slice: 0, 7 -%}
+          {%- if _fig == 'Figure ' -%}{%- continue -%}{%- endif -%}
+          {%- assign post_summary = _ptext -%}
+        {%- endfor -%}
+        {%- if post_summary == '' -%}{%- assign post_summary = _body | strip_html | strip -%}{%- endif -%}
+        {{ post_summary | truncate: 200 | escape }}
       </p>
     </div>
 
