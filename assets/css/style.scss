@@ -30,3 +30,14 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
     transform: none;
   }
 }
+
+/* Home-page post titles are headings, not links: ink black (heading colour)
+   per design.md, with emerald (--link-color, mode-aware) reserved for hover. */
+#post-list .post-preview h1 a {
+  color: var(--heading-color);
+
+  &:hover {
+    color: var(--link-color) !important;
+    border-bottom-color: var(--link-color);
+  }
+}
