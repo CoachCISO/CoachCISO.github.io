@@ -13,22 +13,29 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 
 /* --- Coach CISO brand (see docs/design.md) --- */
 
-/* Sidebar logo: show the full square mark instead of cropping it to a circle,
-   with a subtle squircle. The light/dark SVGs are theme-swapped via Chirpy's
-   built-in .light / .dark helper classes (set on the <img>s in sidebar.html). */
-#avatar > a {
-  border-radius: 22%;
-  border: none;
+/* Sidebar avatar (the brand logo): half Chirpy's default size, with the full
+   mark shown inside the circle (padding keeps the square logo from being
+   clipped). Selectors match Chirpy's own specificity (#sidebar #avatar ...). */
+#sidebar #avatar > a {
+  width: 5rem;
+  height: 5rem;
 }
 
-#avatar img {
+#sidebar #avatar img {
   object-fit: contain;
-  padding: 6%;
+  padding: 15%;
 
   &:hover {
     -webkit-transform: none;
     transform: none;
   }
+}
+
+/* Scale the sidebar tagline with the browser-window height so the profile
+   block grows/shrinks to fit the viewport instead of overflowing. */
+#sidebar .site-subtitle {
+  font-size: clamp(0.72rem, 1.9vh, 1.1rem);
+  line-height: 1.45;
 }
 
 /* Home-page post titles are headings, not links: ink black (heading colour)

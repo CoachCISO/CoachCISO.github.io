@@ -24,7 +24,7 @@ timezone: Europe/Berlin
 # ↓ --------------------------
 title: Coach CISO
 
-tagline: "<div>Welcome to Coach CISO</div><div style='padding-bottom: 10px;'></div><div>I'm a Chief Information Security Officer, Chartered Security Professional and Chartered Mechanical Engineer.</div><div style='padding-bottom: 10px;'></div><div>I recently led the security team at OVO Energy where we secured Kubernetes, DevOps and Cloud-native engineering environments.</div><div style='padding-bottom: 10px;'></div><div>I'm a former semi-professional rugby player and love building great technology experiences as well as high velocity teams.</div>"
+tagline: "<div>Welcome to Coach CISO</div><div style='padding-bottom: 10px;'></div><div>Simon Goldsmith is a Chief Information Security Officer, Chartered Security Professional and Chartered Mechanical Engineer.</div><div style='padding-bottom: 10px;'></div><div>Until recently, Simon led the security team at OVO Energy where they secured nationally significant payments, trading, smart metering and call centre operations.Technologies included Kubernetes, DevOps and Cloud-native engineering environments.</div><div style='padding-bottom: 10px;'></div><div>Simon is a former semi-professional rugby player and thrives when building high velocity teams with both technology experience and security as first class requirements.</div>"
 
 description: >-   
   Blog from Simon Goldsmith, a Chief Information Security Officer and a lifelong student of leadership and building high performing teams. Simon believes in security as both a profession and craft - one that requires relentless curiosity, the humility to listen to those in the code, and the agility to adapt to the unique complexity of the organisations and people we serve.
