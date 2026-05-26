@@ -11,7 +11,6 @@ categories:
 # Software security as a system control problem
 
 <div data-excalidraw="/assets/img/2026-05-26/fig0-control-structure.excalidraw" data-alt="fig0-control-structure"></div>
-
 *Using [Nancy Leveson's](http://sunnyday.mit.edu/) generic control loop  and systems theory to propose a control system for software security.*
 
 I've been thinking about the application of systems control theory to software security, and would appreciate feedback on whether I'm adding something, missing a trick or just stating the obvious.[^1]
@@ -32,7 +31,6 @@ I've been thinking about the application of systems control theory to software s
 Higher levels set constraints on the levels below; lower levels feed information back up.
 
 <div data-excalidraw="/assets/img/2026-05-26/fig1-new-control-structure.excalidraw" data-alt="Each controller enforces constrains on the one below using it's process model and updates its beliefs based on observed reality. The AI is both a controller (writing code) and a controlled process constrained by the IDE."></div>
-
 *Figure 3 — Each controller enforces constrains on the one below using it's process model and updates its beliefs based on observed reality. The AI is both a controller (writing code) and a controlled process constrained by the IDE.*
 
 1. ### The controllers
