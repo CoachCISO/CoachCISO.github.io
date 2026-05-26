@@ -56,7 +56,9 @@ layout: page
     <div class="post-content">
       <p>
         {% include no-linenos.html content=post.content %}
-        {{ content | markdownify | strip_html | truncate: 200 | escape }}
+        {% comment %} Drop the leading <h1> so the summary doesn't repeat the post title {% endcomment %}
+        {% assign post_summary = content | markdownify | split: '</h1>' | last %}
+        {{ post_summary | strip_html | truncate: 200 | escape }}
       </p>
     </div>
 
