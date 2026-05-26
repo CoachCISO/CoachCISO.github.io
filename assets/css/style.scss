@@ -33,10 +33,10 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
   line-height: 1.15;
 }
 
-/* The tagline's inter-paragraph spacer divs (inline padding-bottom: 10px) eat
-   vertical space; compress them so a readable font still fits without scroll. */
+/* Full line space between the tagline's paragraphs (override the inline 10px
+   spacer divs). */
 #sidebar .site-subtitle div[style*="padding-bottom"] {
-  padding-bottom: 3px !important;
+  padding-bottom: 1em !important;
 }
 
 /* Home-page post titles are headings, not links: ink black (heading colour)
