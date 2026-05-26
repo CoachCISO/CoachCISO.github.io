@@ -56,7 +56,7 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
    grey, pulled tight to the diagram. */
 .excalidraw-rendered + p,
 [data-excalidraw] + p {
-  margin-top: -0.5rem;
+  margin-top: 0.2rem;
   text-align: center;
   font-size: 80%;
   color: #6d6c6c;
@@ -64,4 +64,9 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
   em {
     font-style: normal;
   }
+}
+
+/* Footnotes: smaller than body text. */
+.footnotes {
+  font-size: 0.8rem;
 }
