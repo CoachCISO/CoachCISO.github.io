@@ -29,7 +29,7 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 /* Scale the sidebar tagline with the browser-window height so the profile
    block grows/shrinks to fit the viewport instead of overflowing. */
 #sidebar .site-subtitle {
-  font-size: clamp(0.82rem, 1.6vh, 0.92rem);
+  font-size: clamp(0.82rem, 1.6vh, 1.0rem);
   line-height: 1.32;
 }
 
