@@ -4,18 +4,18 @@
 
 @mixin light-scheme {
   /* Framework color */
-  --body-bg: #fafafa;
+  --body-bg: #f5f5f7;
   --mask-bg: #c1c3c5;
   --main-bg: white;
   --main-border-color: #f3f3f3;
 
   /* Common color */
-  --text-color: #34343c;
-  --text-muted-color: gray;
-  --heading-color: black;
+  --text-color: #1d1d1f;
+  --text-muted-color: #86868b;
+  --heading-color: #1d1d1f;
   --blockquote-border-color: #eeeeee;
   --blockquote-text-color: #9a9a9a;
-  --link-color: #2a408e;
+  --link-color: #064e3b;
   --link-underline-color: #dee2e6;
   --button-bg: #ffffff;
   --btn-border-color: #e9ecef;
@@ -34,10 +34,10 @@
     );
 
   /* Sidebar */
-  --sidebar-bg: #eeeeee;
+  --sidebar-bg: #f5f5f7;
   --sidebar-muted-color: #a2a19f;
-  --sidebar-active-color: #424242;
-  --nav-cursor-color: #757575;
+  --sidebar-active-color: #064e3b;
+  --nav-cursor-color: #064e3b;
   --sidebar-btn-bg: white;
 
   /* Topbar */
@@ -50,7 +50,7 @@
   --input-focus-border-color: var(--btn-border-color);
 
   /* Home page */
-  --post-list-text-color: dimgray;
+  --post-list-text-color: #86868b;
   --btn-patinator-text-color: #555555;
   --btn-paginator-hover-color: var(--sidebar-bg);
   --btn-paginator-border-color: var(--sidebar-bg);

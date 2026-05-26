@@ -10,3 +10,23 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 @import "{{ site.theme }}";
 
 /* append your custom style below */
+
+/* --- Coach CISO brand (see docs/design.md) --- */
+
+/* Sidebar logo: show the full square mark instead of cropping it to a circle,
+   with a subtle squircle. The light/dark SVGs are theme-swapped via Chirpy's
+   built-in .light / .dark helper classes (set on the <img>s in sidebar.html). */
+#avatar > a {
+  border-radius: 22%;
+  border: none;
+}
+
+#avatar img {
+  object-fit: contain;
+  padding: 6%;
+
+  &:hover {
+    -webkit-transform: none;
+    transform: none;
+  }
+}
