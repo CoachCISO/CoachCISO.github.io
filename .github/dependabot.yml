@@ -1,15 +1,8 @@
 version: 2
 updates:
-  - package-ecosystem: "bundler"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-
+  # Only github-actions: bundler/npm need committed lockfiles (gitignored here),
+  # and the npm deps are Chirpy's dev tooling we don't use. Gem/package vulns are
+  # still covered by Dependabot security alerts, which don't need a lockfile.
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
