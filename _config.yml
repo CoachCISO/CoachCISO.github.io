@@ -70,7 +70,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: /assets/img/branding/coach-ciso-logo-light.svg
+avatar: /assets/img/favicons/simon.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true

@@ -16,8 +16,7 @@
               {{ site.avatar | relative_url }}
             {% endif %}
           {% endcapture %}
-          <img src="{{ avatar_url | strip }}" alt="{{ site.title }}" class="light" onerror="this.style.display='none'">
-          <img src="{{ '/assets/img/branding/coach-ciso-logo-dark.svg' | relative_url }}" alt="{{ site.title }}" class="dark" onerror="this.style.display='none'">
+          <img src="{{ avatar_url | strip }}" alt="{{ site.title }}" onerror="this.style.display='none'">
         </a>
       </div>
     {% endif %}

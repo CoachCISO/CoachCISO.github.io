@@ -13,17 +13,16 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 
 /* --- Coach CISO brand (see docs/design.md) --- */
 
-/* Sidebar avatar (the brand logo): half Chirpy's default size, with the full
-   mark shown inside the circle (padding keeps the square logo from being
-   clipped). Selectors match Chirpy's own specificity (#sidebar #avatar ...). */
+/* Sidebar avatar (Simon's photo): half Chirpy's default size; cover-fit so the
+   portrait fills the circle without distortion. Selectors match Chirpy's own
+   specificity (#sidebar #avatar ...). */
 #sidebar #avatar > a {
   width: 5rem;
   height: 5rem;
 }
 
 #sidebar #avatar img {
-  object-fit: contain;
-  padding: 15%;
+  object-fit: cover;
 
   &:hover {
     -webkit-transform: none;
