@@ -74,8 +74,9 @@ In the 1950s, engineers at Japanese manufacturers — with input from Deming, Cr
 The relevant lesson is the result, not the history: Toyota didn't abandon inspection. It integrated prevention, inspection, and continuous improvement into a single system owned by the people doing the work. The Taylorist separation — quality is someone else's department — is what it eliminated.
 
 For the full historical context including Deming's variation theory, Crosby's Zero Defects, Juran's Quality Trilogy, and a Crosby-Juran debate, see Appendix A: The Quality Revolution.
-![The Quality Revolution](/assets/img/2026-06-20/Quality Revolution.png)
 
+![The Quality Revolution](/assets/img/2026-06-20/quality-revolution.png)
+*Figure X - A (very simplified) history of quality.*
 ---
 
 ## The economics of the hidden factory in software
